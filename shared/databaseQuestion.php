@@ -46,5 +46,23 @@
             dbquestion::disconnect();
             return $result;
         }
+        public function getQuesDetail($question_id)
+        {
+            $conn=dbquestion::connect();
+            //$sql="select q.*,s.* from que_tbl q,subject_tbl s where s.sub_id=q.fk_sub_id AND q.que_id=".$question_id;
+            $sql="select q.*,s.* from que_tbl q,subject_tbl s where q.que_id=".$question_id." AND q.fk_sub_id=s.sub_id" ;
+            //echo $sql;
+            $result=$conn->query($sql);
+            dbquestion::disconnect();
+            return $result;
+        }
+        public function delAllQuest($all)
+        {
+            $conn=dbquestion::connect();
+            $sql="delete from que_tbl where que_id IN ($all)";
+            $result=$conn->query($sql);
+            dbquestion::disconnect();
+            return $result;
+        }
     }
 ?>
