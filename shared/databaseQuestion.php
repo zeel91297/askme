@@ -17,11 +17,11 @@
             dbquestion::disconnect();
             return $result;
         }
-        public function questionInsert($_qtitle,$_qdesc,$_qimg,$_mailid,$_subid,$_qdate){
+        public function questionInsert($_qtitle,$_qdesc,$_qimg,$_mailid,$_subid){
             $conn=dbquestion::connect();
             $sql="insert into que_tbl
                 (que_title,que_desc,que_img,fk_email_id,fk_sub_id,que_date) 
-                values('".$_qtitle."','".$_qdesc."','".$_qimg."','".$_mailid."','".$_subid."','".system.date()."')";
+                values('".$_qtitle."','".$_qdesc."','".$_qimg."','".$_mailid."','".$_subid."','".date("Y-m-d")."')";
             $result=$conn->query($sql);
             echo $sql;
             dbquestion::disconnect();

@@ -21,7 +21,7 @@
             $conn=dbanswer::connect();
             $sql="insert into ans_tbl
                 (ans_desc,ans_img,fk_que_id,fk_email_id,ans_date) 
-                values('".$_adesc."','".$_aimg."','".$_queid."','".$_mailid."','".system.date()."')";
+                values('".$_adesc."','".$_aimg."','".$_queid."','".$_mailid."','".date("Y-m-d")."')";
             $result=$conn->query($sql);
             echo $sql;
             dbanswer::disconnect();
