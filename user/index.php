@@ -10,7 +10,7 @@
 		require '../shared/databaseQuestion.php';
 		$obj=new dbquestion();
 		$result=$obj->questAnswerUser();
-		$result1=$obj->getByQueid();
+		$result1=$obj->getByQue();
     ?>
 	<div class="section-warp ask-me">
 		<div class="container clearfix">
@@ -52,7 +52,7 @@
 						<?php
 							while($row=$result->fetch_assoc())
 							{
-									echo $row["que_id"];
+									//echo $row["que_id"];
 									echo '<article class="question question-type-normal">';
 								echo '<h2>';
 									echo '<a href="single_question.php?queid='.$row["que_id"].'">'.$row["que_title"].'</a>';
