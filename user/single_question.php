@@ -194,84 +194,12 @@
 						</ul>
 					</div>
 				</div>
-				
-				<div class="widget widget_social">
-					<h3 class="widget_title">Find Us</h3>
-					<ul>
-						<li class="rss-subscribers">
-							<a href="#" target="_blank">
-							<strong>
-								<i class="icon-rss"></i>
-								<span>Subscribe</span><br>
-								<small>To RSS Feed</small>
-							</strong>
-							</a>
-						</li>
-						<li class="facebook-fans">
-							<a href="#" target="_blank">
-							<strong>
-								<i class="social_icon-facebook"></i>
-								<span>5,000</span><br>
-								<small>People like it</small>
-							</strong>
-							</a>
-						</li>
-						<li class="twitter-followers">
-							<a href="#" target="_blank">
-							<strong>
-								<i class="social_icon-twitter"></i>
-								<span>3,000</span><br>
-								<small>Followers</small>
-							</strong>
-							</a>
-						</li>
-						<li class="youtube-subs">
-							<a href="#" target="_blank">
-							<strong>
-								<i class="icon-play"></i>
-								<span>1,000</span><br>
-								<small>Subscribers</small>
-							</strong>
-							</a>
-						</li>
-					</ul>
+				<form method="post" action="postanswer.php?queid=<?php echo $_queid; ?>">
+					<div class="widget widget_social">
+					<h3 class="widget_title">Want to post answer?</h3>
+					<input type="submit" id="publish-question" value="Publish Your Answer" class="button red-button small submit">
 				</div>
-				
-				<div class="widget widget_login">
-					<h3 class="widget_title">Login</h3>
-					<div class="form-style form-style-2">
-						<form>
-							<div class="form-inputs clearfix">
-								<p class="login-text">
-									<input type="text" value="Username" onfocus="if (this.value == 'Username') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Username';}">
-									<i class="icon-user"></i>
-								</p>
-								<p class="login-password">
-									<input type="password" value="Password" onfocus="if (this.value == 'Password') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Password';}">
-									<i class="icon-lock"></i>
-									<a href="#">Forget</a>
-								</p>
-							</div>
-							<p class="form-submit login-submit">
-								<input type="submit" value="Log in" class="button color small login-submit submit">
-							</p>
-							<div class="rememberme">
-								<label><input type="checkbox" checked="checked"> Remember Me</label>
-							</div>
-						</form>
-						<ul class="login-links login-links-r">
-							<li><a href="#">Register</a></li>
-						</ul>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-				
-				
-				
-				
-				
-				
-				
+				</form>
 			</aside><!-- End sidebar -->
 		</div><!-- End row -->
 	</section><!-- End container -->

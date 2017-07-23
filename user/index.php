@@ -182,11 +182,6 @@
 						</ul>
 					</div>
 				</div>
-				
-				
-				
-				
-		
 		</div><!-- End row -->
 	</section><!-- End container -->
 
