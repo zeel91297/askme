@@ -9,10 +9,10 @@
         include '../visitor/user_navbar.php';
 		require '../shared/databaseQuestion.php';
 		$obj=new dbquestion();
-		$resul1=$obj->questAnswerUser();
+		$result1=$obj->questAnswerUser();
 		$result2=$obj->getByQueRecent();
 		$result3=$obj->getByLikes();
-		$resul4=$obj->noAnswer();
+		$result4=$obj->noAnswer();
     ?>
 	<div class="section-warp ask-me">
 		<div class="container clearfix">
@@ -82,7 +82,7 @@
 					</div>
 					<div class="tab-inner-warp" id="2que">
 						<?php
-							while($row=$result->fetch_assoc())
+							while($row=$result2->fetch_assoc())
 							{
 									//echo $row["que_id"];
 									echo '<article class="question question-type-normal">';
@@ -111,10 +111,64 @@
 						?>
 					</div>
 					<div class="tab-inner-warp" id="que3">
-						
+						<?php
+							while($row=$result3->fetch_assoc())
+							{
+									//echo $row["que_id"];
+									echo '<article class="question question-type-normal">';
+								echo '<h2>';
+									echo '<a href="single_question.php?queid='.$row["que_id"].'">'.$row["que_title"].'</a>';
+								echo '</h2>';
+								echo '<div class="question-author">';
+									echo '<a href="#" original-title="ahmed" class="question-author-img tooltip-n"><span></span><img alt="" src="'.$row["profile_pic"].'"></a>';
+								echo '</div>';
+								echo '<div class="question-inner">';
+									echo '<div class="clearfix"></div>';
+									echo '<p class="question-desc">'.$row["que_desc"].'</p>';
+									echo '<div class="question-details">';
+										echo '<span class="question-answered question-answered-done"><i class="icon-ok"></i>solved</span>';
+										echo '<span class="question-favorite"><i class="icon-star"></i>5</span>';
+									echo '</div>';
+									echo '<span class="question-category"><a href="#"><i class="icon-folder-close"></i>wordpress</a></span>';
+									echo '<span class="question-date"><i class="icon-time"></i>'.$row["que_date"].'</span>';
+
+									echo '<span class="question-comment"><a href="#"><i class="icon-comment"></i>5 Answer</a></span>';
+									echo '<span class="question-view"><i class="icon-user"></i>70 views</span>';
+									echo '<div class="clearfix"></div>';
+								echo '</div>';
+							echo '</article>';
+							}
+						?>
 					</div>
 					<div class="tab-inner-warp" id="que4">
-						
+						<?php
+							while($row=$result4->fetch_assoc())
+							{
+									//echo $row["que_id"];
+									echo '<article class="question question-type-normal">';
+								echo '<h2>';
+									echo '<a href="single_question.php?queid='.$row["que_id"].'">'.$row["que_title"].'</a>';
+								echo '</h2>';
+								echo '<div class="question-author">';
+									echo '<a href="#" original-title="ahmed" class="question-author-img tooltip-n"><span></span><img alt="" src="'.$row["profile_pic"].'"></a>';
+								echo '</div>';
+								echo '<div class="question-inner">';
+									echo '<div class="clearfix"></div>';
+									echo '<p class="question-desc">'.$row["que_desc"].'</p>';
+									echo '<div class="question-details">';
+										echo '<span class="question-answered question-answered-done"><i class="icon-ok"></i>solved</span>';
+										echo '<span class="question-favorite"><i class="icon-star"></i>5</span>';
+									echo '</div>';
+									echo '<span class="question-category"><a href="#"><i class="icon-folder-close"></i>wordpress</a></span>';
+									echo '<span class="question-date"><i class="icon-time"></i>'.$row["que_date"].'</span>';
+
+									echo '<span class="question-comment"><a href="#"><i class="icon-comment"></i>5 Answer</a></span>';
+									echo '<span class="question-view"><i class="icon-user"></i>70 views</span>';
+									echo '<div class="clearfix"></div>';
+								echo '</div>';
+							echo '</article>';
+							}
+						?>
 					</div>
 		        </div><!-- End page-content -->
 			</div><!-- End main -->
@@ -129,156 +183,13 @@
 					</div>
 				</div>
 				
-				<div class="widget widget_social">
-					<h3 class="widget_title">Find Us</h3>
-					<ul>
-						<li class="rss-subscribers">
-							<a href="#" target="_blank">
-							<strong>
-								<i class="icon-rss"></i>
-								<span>Subscribe</span><br>
-								<small>To RSS Feed</small>
-							</strong>
-							</a>
-						</li>
-						<li class="facebook-fans">
-							<a href="#" target="_blank">
-							<strong>
-								<i class="social_icon-facebook"></i>
-								<span>5,000</span><br>
-								<small>People like it</small>
-							</strong>
-							</a>
-						</li>
-						<li class="twitter-followers">
-							<a href="#" target="_blank">
-							<strong>
-								<i class="social_icon-twitter"></i>
-								<span>3,000</span><br>
-								<small>Followers</small>
-							</strong>
-							</a>
-						</li>
-						<li class="youtube-subs">
-							<a href="#" target="_blank">
-							<strong>
-								<i class="icon-play"></i>
-								<span>1,000</span><br>
-								<small>Subscribers</small>
-							</strong>
-							</a>
-						</li>
-					</ul>
-				</div>
 				
-				<div class="widget widget_login">
-					<h3 class="widget_title">Login</h3>
-					<div class="form-style form-style-2">
-						<form>
-							<div class="form-inputs clearfix">
-								<p class="login-text">
-									<input type="text" value="Username" onfocus="if (this.value == 'Username') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Username';}">
-									<i class="icon-user"></i>
-								</p>
-								<p class="login-password">
-									<input type="password" value="Password" onfocus="if (this.value == 'Password') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Password';}">
-									<i class="icon-lock"></i>
-									<a href="#">Forget</a>
-								</p>
-							</div>
-							<p class="form-submit login-submit">
-								<input type="submit" value="Log in" class="button color small login-submit submit">
-							</p>
-							<div class="rememberme">
-								<label><input type="checkbox" checked="checked"> Remember Me</label>
-							</div>
-						</form>
-						<ul class="login-links login-links-r">
-							<li><a href="#">Register</a></li>
-						</ul>
-						<div class="clearfix"></div>
-					</div>
-				</div>
 				
-				<div class="widget widget_highest_points">
-					<h3 class="widget_title">Highest points</h3>
-					<ul>
-						<li>
-							<div class="author-img">
-								<a href="#"><img width="60" height="60" src="../../ask-me/images/demo/admin.jpg" alt=""></a>
-							</div> 
-							<h6><a href="#">admin</a></h6>
-							<span class="comment">12 Points</span>
-						</li>
-						<li>
-							<div class="author-img">
-								<a href="#"><img width="60" height="60" src="../../ask-me/images/demo/avatar.png" alt=""></a>
-							</div> 
-							<h6><a href="#">vbegy</a></h6>
-							<span class="comment">10 Points</span>
-						</li>
-						<li>
-							<div class="author-img">
-								<a href="#"><img width="60" height="60" src="../../ask-me/images/demo/avatar.png" alt=""></a>
-							</div> 
-							<h6><a href="#">ahmed</a></h6>
-							<span class="comment">5 Points</span>
-						</li>
-					</ul>
-				</div>
 				
-				<div class="widget widget_tag_cloud">
-					<h3 class="widget_title">Tags</h3>
-					<a href="#">projects</a>
-					<a href="#">Portfolio</a>
-					<a href="#">Wordpress</a>
-					<a href="#">Html</a>
-					<a href="#">Css</a>
-					<a href="#">jQuery</a>
-					<a href="#">2code</a>
-					<a href="#">vbegy</a>
-				</div>
-				
-				<div class="widget">
-					<h3 class="widget_title">Recent Questions</h3>
-					<ul class="related-posts">
-						<li class="related-item">
-							<h3><a href="#">This is my first Question</a></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							<div class="clear"></div><span>Feb 22, 2014</span>
-						</li>
-						<li class="related-item">
-							<h3><a href="#">This Is My Second Poll Question</a></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							<div class="clear"></div><span>Feb 22, 2014</span>
-						</li>
-					</ul>
-				</div>
-				
-			</aside><!-- End sidebar -->
+		
 		</div><!-- End row -->
 	</section><!-- End container -->
-	
-	
-<!-- js -->
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-<script src="js/jquery.easing.1.3.min.js"></script>
-<script src="js/html5.js"></script>
-<script src="js/twitter/jquery.tweet.js"></script>
-<script src="js/jflickrfeed.min.js"></script>
-<script src="js/jquery.inview.min.js"></script>
-<script src="js/jquery.tipsy.js"></script>
-<script src="js/tabs.js"></script>
-<script src="js/jquery.flexslider.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
-<script src="js/jquery.scrollTo.js"></script>
-<script src="js/jquery.nav.js"></script>
-<script src="js/tags.js"></script>
-<script src="js/jquery.bxslider.min.js"></script>
-<script src="js/custom.js"></script>
-<!-- End js -->
+
 
 </body>
 

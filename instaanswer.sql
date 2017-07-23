@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2017 at 08:22 AM
+-- Generation Time: Jul 23, 2017 at 08:45 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -119,6 +119,7 @@ CREATE TABLE `user_tbl` (
   `email_id` varchar(100) NOT NULL,
   `user_name` varchar(15) NOT NULL,
   `user_pass` varchar(10) NOT NULL,
+  `user_address` varchar(50) DEFAULT NULL,
   `mobile_no` varchar(10) NOT NULL,
   `gender` varchar(6) DEFAULT NULL,
   `profile_pic` varchar(200) DEFAULT NULL,
@@ -131,13 +132,13 @@ CREATE TABLE `user_tbl` (
 -- Dumping data for table `user_tbl`
 --
 
-INSERT INTO `user_tbl` (`email_id`, `user_name`, `user_pass`, `mobile_no`, `gender`, `profile_pic`, `verify`, `token`, `user_type`) VALUES
-('admin@gmail.com', 'admin', 'admin', '8128076168', 'male', '../images/minion.jpg', '1', '', 'admin'),
-('bhargavijansari01@gmail.com', 'Bhargavi', '123456', '7403626416', 'female', '../images/bhargavi.jpg', '1', '', 'user'),
-('jaishilbhavsar@yahoo.com', 'Jaishil Bhavsar', '123456', '9727333333', 'male', '../images/jaishil.jpg', '1', '', 'user'),
-('jollyprashil@gmail.com', 'Prashil Parmar', '123456', '9099022499', 'male', '../images/prashil.png', '1', '', 'user'),
-('kevalshah@gmail.com', 'Keval Shah', '123456', '8401634165', 'male', '../images/keval.png', '1', '', 'user'),
-('zeel91297@gmail.com', 'Zeel Modi', '123456', '8460816553', 'female', '../images/zeel.jpg', '1', '', 'user');
+INSERT INTO `user_tbl` (`email_id`, `user_name`, `user_pass`, `user_address`, `mobile_no`, `gender`, `profile_pic`, `verify`, `token`, `user_type`) VALUES
+('admin@gmail.com', 'admin', 'admin', 'home', '8128076168', 'male', '../images/minion.jpg', 'yes', '', 'admin'),
+('bhargavijansari01@gmail.com', 'Bhargavi', '123456', 'Kalupur', '7403626416', 'female', '../images/bhargavi.jpg', 'yes', '', 'user'),
+('jaishilbhavsar@yahoo.com', 'Jaishil Bhavsar', '123456', 'Saraspur', '9727333333', 'male', '../images/jaishil.jpg', 'yes', '', 'user'),
+('jollyprashil@gmail.com', 'Prashil Parmar', '123456', 'Thaltej', '9099022499', 'male', '../images/prashil.png', 'yes', '', 'user'),
+('kevalshah@gmail.com', 'Keval Shah', '123456', NULL, '8401634165', 'male', '../images/keval.png', 'yes', '', 'user'),
+('zeel91297@gmail.com', 'Zeel Modi', '123456', 'Manekchowk', '8460816553', 'female', '../images/zeel.jpg', 'yes', '', 'user');
 
 --
 -- Indexes for dumped tables
