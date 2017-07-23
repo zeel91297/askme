@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2017 at 06:51 AM
+-- Generation Time: Jul 23, 2017 at 08:22 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -33,20 +33,21 @@ CREATE TABLE `ans_tbl` (
   `fk_que_id` int(11) NOT NULL,
   `fk_email_id` varchar(100) NOT NULL,
   `ans_date` date NOT NULL,
-  `ans_like` double DEFAULT NULL
+  `ans_like` double DEFAULT NULL,
+  `ans_approve` int(5) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ans_tbl`
 --
 
-INSERT INTO `ans_tbl` (`ans_id`, `ans_desc`, `ans_img`, `fk_que_id`, `fk_email_id`, `ans_date`, `ans_like`) VALUES
-(1, 'Both allocates memory from heap area/dynamic memory. By default calloc fills the allocated memory with 0’s.', NULL, 2, 'jaishilbhavsar@yahoo.com', '2017-07-04', 500),
-(3, 'Class is a blue print which reflects the entities attributes and actions. Technically defining a class is designing an user defined data type.', NULL, 5, 'jollyprashil@gmail.com', '2017-07-11', 150),
-(4, 'Python is an interpreted language. That means that, unlike languages like C and its variants, Python does not need to be compiled before it is run. Other interpreted languages include PHP and Ruby.', NULL, 6, 'zeel91297@gmail.com', '2017-07-17', 40),
-(5, 'In Python, functions are first-class objects. This means that they can be assigned to variables, returned from other functions and passed into functions. Classes are also first class objects', NULL, 6, 'zeel91297@gmail.com', '2017-07-11', 100),
-(6, 'Python is dynamically typed, this means that you don\'t need to state the types of variables when you declare them or anything like that. ', NULL, 6, 'jaishilbhavsar@yahoo.com', '2017-07-11', 44),
-(7, 'Synchronous: waits until the task has completed Asynchronous: completes a task in background and can notify you when complete', NULL, 7, 'jaishilbhavsar@gmail.com', '2017-07-03', 500);
+INSERT INTO `ans_tbl` (`ans_id`, `ans_desc`, `ans_img`, `fk_que_id`, `fk_email_id`, `ans_date`, `ans_like`, `ans_approve`) VALUES
+(1, 'Both allocates memory from heap area/dynamic memory. By default calloc fills the allocated memory with 0’s.', NULL, 2, 'jaishilbhavsar@yahoo.com', '2017-07-04', 500, 1),
+(3, 'Class is a blue print which reflects the entities attributes and actions. Technically defining a class is designing an user defined data type.', NULL, 5, 'jollyprashil@gmail.com', '2017-07-11', 150, 1),
+(4, 'Python is an interpreted language. That means that, unlike languages like C and its variants, Python does not need to be compiled before it is run. Other interpreted languages include PHP and Ruby.', NULL, 6, 'zeel91297@gmail.com', '2017-07-17', 40, 1),
+(5, 'In Python, functions are first-class objects. This means that they can be assigned to variables, returned from other functions and passed into functions. Classes are also first class objects', NULL, 6, 'zeel91297@gmail.com', '2017-07-11', 100, 1),
+(6, 'Python is dynamically typed, this means that you don\'t need to state the types of variables when you declare them or anything like that. ', NULL, 6, 'jaishilbhavsar@yahoo.com', '2017-07-11', 44, 1),
+(7, 'Synchronous: waits until the task has completed Asynchronous: completes a task in background and can notify you when complete', NULL, 7, 'jaishilbhavsar@gmail.com', '2017-07-03', 500, 1);
 
 -- --------------------------------------------------------
 
@@ -61,23 +62,25 @@ CREATE TABLE `que_tbl` (
   `que_img` varchar(300) DEFAULT NULL,
   `fk_email_id` varchar(50) NOT NULL,
   `fk_sub_id` int(11) NOT NULL,
-  `que_date` date NOT NULL
+  `que_date` date NOT NULL,
+  `que_flag` int(5) NOT NULL DEFAULT '0',
+  `que_approve` int(5) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `que_tbl`
 --
 
-INSERT INTO `que_tbl` (`que_id`, `que_title`, `que_desc`, `que_img`, `fk_email_id`, `fk_sub_id`, `que_date`) VALUES
-(2, 'Distinguish between malloc() and calloc()', 'helo world', '../images/patterns/bg13.png', 'zeel91297@gmail.com', 2, '2017-05-02'),
-(3, 'What is file extension of Web Services in .Net?', 'Extentions for .NET', NULL, 'bhargavijansari01@gmail.com', 9, '2017-06-04'),
-(4, 'What is SQL and Why is it important?', 'Structured Query Language', NULL, 'zeel91297@gmail.com', 2, '2017-06-12'),
-(5, 'What is a class?', 'class in c++', NULL, 'jaishilbhavsar@yahoo.com', 1, '2017-07-17'),
-(6, 'What is Python really?', '', NULL, 'kevalshah@gmail.com', 8, '2017-06-28'),
-(7, 'What is the difference between Synchronous & Asynchronous task ? ', 'related to IOS', NULL, 'jollyprashil@gmail.com', 10, '2017-04-03'),
-(8, 'Why don’t we use strong for enum property in Objective-C ? ', '', NULL, 'zeel91297@gmail.com', 1, '2017-07-02'),
-(9, 'What is Android?', 'dgrdfgldkfnhlsdfbl', '../images/', 'zeel91297@gmail.com', 3, '2017-07-22'),
-(10, 'What is Android?', 'dgrdfgldkfnhlsdfbl', '../images/17a702abdb19f71beb3002454dd42cc7.jpg', 'zeel91297@gmail.com', 3, '2017-07-22');
+INSERT INTO `que_tbl` (`que_id`, `que_title`, `que_desc`, `que_img`, `fk_email_id`, `fk_sub_id`, `que_date`, `que_flag`, `que_approve`) VALUES
+(2, 'Distinguish between malloc() and calloc()', 'helo world', '../images/patterns/bg13.png', 'zeel91297@gmail.com', 2, '2017-05-02', 1, 1),
+(3, 'What is file extension of Web Services in .Net?', 'Extentions for .NET', NULL, 'bhargavijansari01@gmail.com', 9, '2017-06-04', 0, 1),
+(4, 'What is SQL and Why is it important?', 'Structured Query Language', NULL, 'zeel91297@gmail.com', 2, '2017-06-12', 0, 1),
+(5, 'What is a class?', 'class in c++', NULL, 'jaishilbhavsar@yahoo.com', 1, '2017-07-17', 1, 1),
+(6, 'What is Python really?', '', NULL, 'kevalshah@gmail.com', 8, '2017-06-28', 1, 1),
+(7, 'What is the difference between Synchronous & Asynchronous task ? ', 'related to IOS', NULL, 'jollyprashil@gmail.com', 10, '2017-04-03', 1, 1),
+(8, 'Why don’t we use strong for enum property in Objective-C ? ', '', NULL, 'zeel91297@gmail.com', 1, '2017-07-02', 0, 1),
+(9, 'What is Android?', 'dgrdfgldkfnhlsdfbl', '../images/', 'zeel91297@gmail.com', 3, '2017-07-22', 0, 1),
+(10, 'What is Android?', 'dgrdfgldkfnhlsdfbl', '../images/17a702abdb19f71beb3002454dd42cc7.jpg', 'zeel91297@gmail.com', 3, '2017-07-22', 0, 1);
 
 -- --------------------------------------------------------
 

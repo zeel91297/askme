@@ -106,6 +106,15 @@
             return $result;
         }
 
+        public function getByLikes()
+        {
+            $conn=dbquestion::connect();
+            $sql="select q.*,a.*,u.* from que_tbl q,ans_tbl a,user_tbl u where q.que_id=a.fk_que_id AND a.fk_email_id=u.email_id ORDER BY `a`.`ans_like` ASC";
+            $result=$conn->query($sql);
+            dbquestion::disconnect();
+            return $result;
+        }
+
         public function getByQueRecent()
         {
             $conn=dbquestion::connect();
@@ -117,5 +126,14 @@
             return $result;
         }
         
+        public function noAnswer()
+        {
+            $conn=dbquestion::connect();
+            $sql="select q.*,u.* from que_tbl q,user_tbl u where q.fk_email_id=u.email_id AND q.que_flag=0";
+            $result=$conn->query($sql);
+            dbquestion::disconnect();
+            return $result;
+        }
+
     }
 ?>
