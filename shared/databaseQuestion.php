@@ -105,5 +105,17 @@
             dbquestion::disconnect();
             return $result;
         }
+
+        public function getByQueRecent()
+        {
+            $conn=dbquestion::connect();
+            //$sql="select q.que_id,a.*,COUNT(a.ans_id) from que_tbl q LEFT JOIN ans_tbl a ON q.que_id=a.fk_que_id GROUP BY q.que_id";
+            //maybe wrong $sql="select q.que_id,a.*,COUNT(a.ans_id) from que_tbl q LEFT JOIN ans_tbl a ON q.que_id=a.fk_que_id AND  GROUP BY q.que_id";
+            $sql="select q.*,a.*,u.* from que_tbl q,ans_tbl a,user_tbl u where q.que_id=a.fk_que_id AND a.fk_email_id=u.email_id ORDER BY `q`.`que_date` DESC";
+            $result=$conn->query($sql);
+            dbquestion::disconnect();
+            return $result;
+        }
+        
     }
 ?>
