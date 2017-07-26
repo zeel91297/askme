@@ -130,8 +130,8 @@
 		<section class="container clearfix">
 			<nav class="header-top-nav">
 				<ul>
-					<li><a href="contact_us.html"><i class="icon-envelope"></i>Contact</a></li>
-					<li><a href="#"><i class="icon-headphones"></i>Support</a></li>
+					<!--<li><a href="contact_us.html"><i class="icon-envelope"></i>Contact</a></li>
+					<li><a href="#"><i class="icon-headphones"></i>Support</a></li>-->
 					<li><a href="login.html" id="login-panel"><i class="icon-user"></i>Login Area</a></li>
 				</ul>
 			</nav>
@@ -145,19 +145,13 @@
 	</div><!-- End header-top -->
 	<header id="header" class="header_light">
 		<section class="container clearfix">
-			<div class="logo"><a href="index.html"><img alt="" src="../images/logo_light.png"></a></div>
+			<div class="logo"><a href="../user/index.php"><img alt="" src="../images/logo_light.png"></a></div>
 			<nav class="navigation">
 				<ul>
-					<li class="current_page_item"><a href="index.html">Home</a>
-						<ul>
-							<li class="current_page_item"><a href="index.html">Home</a></li>
-							<li><a href="index_2.html">Home 2</a></li>
-							<li><a href="index_boxed_1.html">Home Boxed 1</a></li>
-							<li><a href="index_boxed_2.html">Home Boxed 2</a></li>
-							<li><a href="index_no_box.html">Home No Box</a></li>
-						</ul>
+					<li class="current_page_item"><a href="../user/index.php">Home</a>
+				
 					</li>
-					<li class="ask_question"><a href="ask_question.html">Ask Question</a></li>
+					<li class="ask_question"><a href="../user/ask_question.php">Ask Question</a></li>
 					<li><a href="cat_question.html">Questions</a>
 						<ul>
 							<li><a href="cat_question.html">Questions Category</a></li>
@@ -189,13 +183,6 @@
 									<li><a href="blog_2.html">Right sidebar</a></li>
 									<li><a href="blog_2_l_sidebar.html">Left sidebar</a></li>
 									<li><a href="blog_2_full_width.html">Full Width</a></li>
-								</ul>
-							</li>
-							<li><a href="single_post.html">Post Single</a>
-								<ul>
-									<li><a href="single_post.html">Right sidebar</a></li>
-									<li><a href="single_post_l_sidebar.html">Left sidebar</a></li>
-									<li><a href="single_post_full_width.html">Full Width</a></li>
 								</ul>
 							</li>
 						</ul>

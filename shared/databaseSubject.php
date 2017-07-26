@@ -38,7 +38,7 @@
         public function subjectDelAll($all)
         {
             $conn=dbsubject::connect();
-            $sql="delete from sub_tbl where sub_id IN ($all)";
+            $sql="delete from subject_tbl where sub_id IN ($all)";
             $result=$conn->query($sql);
             dbsubject::disconnect();
             return $result;
@@ -47,6 +47,25 @@
         {
             $conn=dbsubject::connect();
             $sql="update sub_tbl set sub_name='".$_subname ."' where sub_id='".$subject_id."' ";
+            $result=$conn->query($sql);
+            dbsubject::disconnect();
+            return $result;
+        }
+
+        public function getAllUsers()
+        {
+            $conn=dbsubject::connect();
+            $sql="select * from user_tbl";
+            $result=$conn->query($sql);
+            dbsubject::disconnect();
+            return $result;   
+        }
+
+        public function delAllUsers($all)
+        {
+            $conn=dbsubject::connect();
+            $sql="delete from user_tbl where email_id IN ('$all')";
+            echo $sql;
             $result=$conn->query($sql);
             dbsubject::disconnect();
             return $result;

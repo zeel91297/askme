@@ -6,13 +6,13 @@
     <body>
         <?php 
             include 'admin_navbar.php';
-            require '../shared/databasebill.php';
-            $obj=new billdb();
-            $result=$obj->getBills();
+            require '../shared/databaseSubject.php';
+            $obj=new dbsubject();
+            $result=$obj->getAllUsers();
         ?>
         <div class="table-responsive container">
         <!--<a href="productinsert.php" class="btn btn-primary" role="button">Insert A Record</a>-->
-        <form method="post" action="deleteallbill.php">
+        <form method="post" action="deleteallusers.php">
         <script>
         $(function () {
             $('#dataTable').dataTable({
@@ -21,25 +21,25 @@
             });
         });
     </script>
-            <table class="table table-hover">
+            <table class="table table-hover" id="dataTable" align="center">
                 <thead>
                     <th>Delete</th>
-                    <th>Email ID</th>
-                    <th>Product Name</th>
-                    <th>Bill Amount</th>
-                    <th>Bill Date</th>
-                    <th>Payment Type</th>
+                    <th>Proile Picture</th>
+                    <th>User Name</th>
+                    <th>Verified</th>
+                    <th>User Type</th>
+                    <th>Details</th>
                 </thead>
                 <?php
                     while($row=$result->fetch_assoc())
                     {
                         echo '<b><tr class="active">';
-                        echo '<td><input type="checkbox" name="chk[]" value="'.$row["bill_no"].'"></td>';
-                        echo '<td>'.$row["fk_email_id"] .'</td>';
-                        echo '<td>'.$row["prod_name"] .'</td>';
-                        echo '<td>'.$row["bill_amount"] .'</td>';
-                        echo '<td>'.$row["bill_date"] .'</td>';
-                        echo '<td>'.$row["pay_type"] .'</td>';
+                        echo '<td><input type="checkbox" name="chk[]" value="'.$row["email_id"].'"></td>';
+                        echo '<td><img class="img-responsive img-thumbnail" height="200px" width="200px"src="'.$row["profile_pic"].'"></td>';
+                        echo '<td>'.$row["user_name"] .'</td>';
+                        echo '<td>'.$row["verify"] .'</td>';
+                        echo '<td>'.$row["user_type"].'</td>';
+                        echo '<td align="center"><a href="userrdetails.php?ansid='.$row["email_id"].'"><i class="icon-eye-open">  View More</a></i></td>';
                         echo '</tr>';
                     }
                 ?>

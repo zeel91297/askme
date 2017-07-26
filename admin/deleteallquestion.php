@@ -6,5 +6,4 @@
         $obj=new dbquestion();
         $result=$obj->delAllQuest($all);
         header('location:questions.php');
-   
 ?>

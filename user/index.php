@@ -13,6 +13,9 @@
 		$result2=$obj->getByQueRecent();
 		$result3=$obj->getByLikes();
 		$result4=$obj->noAnswer();
+
+
+		$conn=new mysqli('localhost','root','','instaanswer');
     ?>
 	<div class="section-warp ask-me">
 		<div class="container clearfix">
@@ -52,6 +55,8 @@
 		            </ul>
 		            <div class="tab-inner-warp" id="1que">
 						<?php
+
+
 							while($row=$result1->fetch_assoc())
 							{
 									//echo $row["que_id"];
@@ -67,12 +72,16 @@
 									echo '<p class="question-desc">'.$row["que_desc"].'</p>';
 									echo '<div class="question-details">';
 										echo '<span class="question-answered question-answered-done"><i class="icon-ok"></i>solved</span>';
-										echo '<span class="question-favorite"><i class="icon-star"></i>5</span>';
+										echo '<span class="question-favorite"><i class="icon-star"></i></span>';
 									echo '</div>';
 									echo '<span class="question-category"><a href="#"><i class="icon-folder-close"></i>wordpress</a></span>';
 									echo '<span class="question-date"><i class="icon-time"></i>'.$row["que_date"].'</span>';
 
-									echo '<span class="question-comment"><a href="#"><i class="icon-comment"></i>5 Answer</a></span>';
+									$sql2="select COUNT(*) as total from ans_tbl where fk_que_id=".$row["que_id"];
+									$result4=$conn->query($sql2);
+									$row2=$result4->fetch_assoc();
+
+									echo '<span class="question-comment"><a href="single_question.php?queid='.$row["que_id"].'"><i class="icon-comment"></i>'.$row2["total"].' Answer</a></span>';
 									echo '<span class="question-view"><i class="icon-user"></i>70 views</span>';
 									echo '<div class="clearfix"></div>';
 								echo '</div>';
@@ -176,9 +185,20 @@
 				<div class="widget widget_stats">
 					<h3 class="widget_title">Stats</h3>
 					<div class="ul_list ul_list-icon-ok">
+						<?php
+
+							
+							$sql="SELECT count(*) as total from que_tbl";
+							$result=$conn->query($sql);
+							$row=$result->fetch_assoc();
+							
+							$sql1="SELECT count(*) as total from ans_tbl";
+							$result1=$conn->query($sql1);
+							$row1=$result1->fetch_assoc();
+						?>
 						<ul>
-							<li><i class="icon-question-sign"></i>Questions ( <span>20</span> )</li>
-							<li><i class="icon-comment"></i>Answers ( <span>50</span> )</li>
+							<li><i class="icon-question-sign"></i>Questions ( <span><?php echo $row["total"]; ?></span> )</li>
+							<li><i class="icon-comment"></i>Answers ( <span><?php echo $row1["total"]; ?></span> )</li>
 						</ul>
 					</div>
 				</div>

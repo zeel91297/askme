@@ -64,5 +64,17 @@
             dbanswer::disconnect();
             return $result;
         }
+        public function addlike($_ansid)
+        {
+            $conn=dbanswer::connect();
+            $sql="select ans_like from ans_tbl where ans_id=".$_ansid;
+            $result=$conn->query($sql);
+            $row=$result->fetch_assoc();
+            $_anslike=$row["ans_like"]+1;
+            $sql="update ans_tbl set ans_like='".$_ansid."' where ans_id=".$_ansid;;
+            $result=$conn->query($sql);
+            dbanswer::disconnect();
+            return $result;
+        }
     }
 ?>

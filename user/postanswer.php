@@ -3,7 +3,7 @@
 //    $_mailid=$_SESSION
 //echo date("Y-m-d");
 $_SESSION["userid"]="zeel91297@gmail.com";
-$_SESSION["queid"]=$_GET["queid"];
+//$_SESSION["queid"]=$_GET["queid"];
 ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -15,7 +15,7 @@ $_SESSION["queid"]=$_GET["queid"];
 
 	<?php
         include '../visitor/user_navbar.php';
-        $_queid=$_GET["queid"];
+        $_queid=$_SESSION["queid"];
         echo $_queid;
 
     ?>

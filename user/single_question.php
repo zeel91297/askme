@@ -55,7 +55,15 @@
 						</div>
 						<span class="question-category"><a href="#"><i class="icon-folder-close"></i>wordpress</a></span>
 						<span class="question-date"><i class="icon-time"></i><?php echo $row["que_date"]; ?></span>
-						<span class="question-comment"><a href="#"><i class="icon-comment"></i>5 Answer</a></span>
+
+						<?php 
+							$conn=new mysqli('localhost','root','','instaanswer');
+							$sql2="select COUNT(*) as total from ans_tbl where fk_que_id=".$row["que_id"];
+							$result4=$conn->query($sql2);
+							$row2=$result4->fetch_assoc();
+						?>
+
+						<span class="question-comment"><a href="#"><i class="icon-comment"></i><?php echo $row2["total"]; ?> Answer</a></span>
 						<span class="question-view"><i class="icon-user"></i>70 views</span>
 						<span class="single-question-vote-result">+22</span>
 						<ul class="single-question-vote">
@@ -139,17 +147,25 @@
 				        <?php echo $row["user_name"]; ?>
 				    </div>
 				</div><!-- End about-author -->
+				<?php
+
+                    $result1=$obj->getByQueid($_queid);
+					$cnt=0;
+                    while($row1=$result1->fetch_assoc())
+                    {
+						$cnt=$cnt+1;
+					}
+				?>
 
                 <div id="commentlist" class="page-content">
-                  <div class="boxedtitle page-title"><h2>Answers ( <span class="color"></span> )</h2></div>
+                  <div class="boxedtitle page-title"><h2>Answers ( <span class="color"><?php echo $cnt; ?></span> )</h2></div>
 				    <ol class="commentlist clearfix">
 				<?php
 
                     $result1=$obj->getByQueid($_queid);
+					$cnt=0;
                     while($row1=$result1->fetch_assoc())
-                    {
-                        echo '';
-                        
+                    {                        
 					    echo '<li class="comment">';
 					        echo '<div class="comment-body comment-body-answered clearfix"> ';
 					            echo '<div class="avatar"><img alt="" src="'.$row1["profile_pic"].'"></div>';
@@ -162,13 +178,19 @@
 					                echo '</div>';
 					                echo '<div class="text"><p>'.$row1["ans_desc"].'</p>';
 					                echo '</div>';
-									echo '<div class="question-answered question-answered-done"><i class="icon-heart-empty"></i>'.$row1["ans_like"].'</div>';
+									if(isset($_POST["ansins"]))
+    								{
+        								$result2=$obj->addlike($_ansid);
+    								}
+									echo '<div class="question-answered question-answered-done"><button type="submit" class="button small green-button"><i class="icon-heart-empty"></i></button>'.$row1["ans_like"].'</div>';
 					            echo '</div>';
 					        echo '</div>';
                     }
                 ?> 
 				
+				<?php
 					
+				?>	
 					            
 					    
 					</ol><!-- End commentlist -->
